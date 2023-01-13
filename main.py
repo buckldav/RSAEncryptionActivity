@@ -1,6 +1,5 @@
 import math
-import random
-import base64
+
 
 class RSA:
     @staticmethod
@@ -9,7 +8,7 @@ class RSA:
         Returns the least common multiple of a and b
         """
 
-        return abs(a*b) // math.gcd(a, b)
+        return abs(a * b) // math.gcd(a, b)
 
     @staticmethod
     def smallest_coprime(a):
@@ -21,10 +20,10 @@ class RSA:
         https://www.geeksforgeeks.org/check-two-numbers-co-prime-not/
         """
 
-        if (not type(a) is int or not a > 2):
+        if not type(a) is int or not a > 2:
             raise ValueError("a must be an integer greater than 2")
         for b in range(2, a):
-            if (math.gcd(a, b) == 1):
+            if math.gcd(a, b) == 1:
                 return b
 
     def __init__(self, p, q):
@@ -39,8 +38,8 @@ class RSA:
 
         self.p = p
         self.q = q
-        self.n = p*q
-        self.l = self.lcm(p-1, q-1)
+        self.n = p * q
+        self.l = self.lcm(p - 1, q - 1)
         self.e = self.smallest_coprime(self.l)
         self.d = pow(self.e, -1, self.l)
 
@@ -61,12 +60,13 @@ class RSA:
 
         return c**self.d % self.n
 
+
 # TODO: input must be an integer and less than n
 if __name__ == "__main__":
     rsa = RSA(61, 53)
-    original = int(input(f"what would you like to encrypt? ")) 
+    original = int(input(f"what would you like to encrypt? "))
     encrypted = rsa.c(original)
-    decrypted = rsa.m(encrypted) 
+    decrypted = rsa.m(encrypted)
     print("original:", original)
     print("encrypted:", encrypted)
     print("decrypted:", decrypted)
