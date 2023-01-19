@@ -74,7 +74,7 @@ if __name__ == "__main__":
         test_smallest_coprime()
         test_lcm()
         test_encryption_boundary()
-        # test_encryption_big()
+        test_encryption_big()
     except AssertionError as e:
         traceback.print_exc(e)
         exit(0)

@@ -80,14 +80,16 @@ class RSA {
     // Private key (for decryption)
     // m(c) = c^d % n
     // """
+    // console.log(BigInt(c) ** BigInt(this.d));
     return parseInt(BigInt(c) ** BigInt(this.d) % BigInt(this.n));
   }
 }
 
+module.exports = RSA;
 // TODO: input must be an integer and less than n
 
 rsa = new RSA(61, 53);
-original = 25; //int(input(f"what would you like to encrypt? "))
+original = 1600; //int(input(f"what would you like to encrypt? "))
 encrypted = rsa.c(original);
 decrypted = rsa.m(encrypted);
 console.log("original:", original);
